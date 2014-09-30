@@ -7,6 +7,9 @@ You can combine any `callable`'s to build another function.
 
 All of composed functions should take only one argument and return result.
 
+This library only supports PHP 5.6  later.  
+If you use the other version, [igorw/compose](https://github.com/igorw/compose) is useful.
+
 ## Usage
 
 ```php
