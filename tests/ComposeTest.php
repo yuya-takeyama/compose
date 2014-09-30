@@ -1,6 +1,8 @@
 <?php
 namespace yuyat;
 
+require_once __DIR__ . '/../src/compose.php';
+
 class ComposeTest extends \PHPUnit_Framework_TestCase
 {
     public function test_compose_two_functions()
