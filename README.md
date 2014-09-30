@@ -3,7 +3,7 @@
 Function to compose functions.
 
 Function-composition is commonly used technique in functional programming.  
-You can combine any `callable`'s to build another function.'  
+You can combine any `callable`'s to build another function.
 
 All of composed functions should take only one argument and return result.
 
@@ -25,6 +25,7 @@ $join = function ($words) {
 $lowerCamelize = compose('lcfirst', $join, $camelizeWords, $splitAsWords);
 
 echo $lowerCamelize(); // => "fooBarBaz"
+```
 
 ## Author
 
