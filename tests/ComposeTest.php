@@ -35,8 +35,7 @@ class ComposeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage all of arguments should be callable
+     * @expectedException PHPUnit_Framework_Error
      */
     public function test_invalid_argument()
     {
