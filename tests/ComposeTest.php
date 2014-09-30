@@ -33,4 +33,22 @@ class ComposeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame('fooBarBaz', $lowerCamelize('foo bar baz'));
     }
+
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage all of arguments should be callable
+     */
+    public function test_invalid_argument()
+    {
+        compose(function ($x) { return $x; }, 'invalid argument');
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage at least two functions are required
+     */
+    public function test_arguments_shortage()
+    {
+        compose(function ($x) { return $x; });
+    }
 }
