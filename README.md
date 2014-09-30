@@ -24,7 +24,7 @@ $join = function ($words) {
 };
 $lowerCamelize = compose('lcfirst', $join, $camelizeWords, $splitAsWords);
 
-echo $lowerCamelize(); // => "fooBarBaz"
+echo $lowerCamelize('foo bar baz'); // => "fooBarBaz"
 ```
 
 ## Author
