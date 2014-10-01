@@ -7,12 +7,16 @@ function compose(callable ...$functions)
             throw new \InvalidArgumentException('at least two functions are required');
     }
 
-    $functions = array_reverse($functions);
     $initial = array_shift($functions);
 
     return array_reduce($functions, function ($f, $g) {
         return function ($x) use ($f, $g) {
-            return $g($f($x));
+            return $f($g($x));
         };
     }, $initial);
+}
+
+function pipeline(callable ...$functions)
+{
+    return compose(...array_reverse($functions));
 }

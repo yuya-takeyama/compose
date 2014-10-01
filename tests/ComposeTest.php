@@ -34,6 +34,22 @@ class ComposeTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('fooBarBaz', $lowerCamelize('foo bar baz'));
     }
 
+    public function test_pipeline()
+    {
+        $splitAsWords = function ($str) {
+            return \preg_split('/\s+/u', $str);
+        };
+        $camelizeWords = function ($words) {
+            return \array_map('ucfirst', $words);
+        };
+        $join = function ($words) {
+            return \join('', $words);
+        };
+        $lowerCamelize = pipeline($splitAsWords, $camelizeWords, $join, 'lcfirst');
+
+        $this->assertSame('fooBarBaz', $lowerCamelize('foo bar baz'));
+    }
+
     /**
      * @expectedException PHPUnit_Framework_Error
      */

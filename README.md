@@ -12,6 +12,10 @@ If you use the other version, [igorw/compose](https://github.com/igorw/compose) 
 
 ## Usage
 
+### yuyat\compose
+
+`compose($f, $g, $h)` is same as `$h($g($f))`
+
 ```php
 <?php
 use function yuyat\compose;
@@ -29,6 +33,13 @@ $lowerCamelize = compose('lcfirst', $join, $camelizeWords, $splitAsWords);
 
 echo $lowerCamelize('foo bar baz'); // => "fooBarBaz"
 ```
+
+### yuyat\pipeline
+
+This function also combines functions, but the arguments order is reversed.  
+Functions are applied in order of your reading.
+
+`pipeline($f, $g, $h)` is same as `$f($g($h))`
 
 ## Author
 
