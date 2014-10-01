@@ -12,7 +12,7 @@ If you use the other version, [igorw/compose](https://github.com/igorw/compose) 
 
 ### yuyat\compose
 
-`compose($f, $g, $h)` is same as `$h($g($f))`
+Calling `compose($f, $g, $h)` with an argument `$x` is equal to `$f($g($h($x)))`
 
 ```php
 <?php
@@ -37,7 +37,7 @@ echo $lowerCamelize('foo bar baz'); // => "fooBarBaz"
 This function also combines functions, but the arguments order is reversed.  
 Functions are applied in order of your reading.
 
-`pipeline($f, $g, $h)` is same as `$f($g($h))`
+Calling `pipeline($f, $g, $h)` with an argument `$x` is equal to `$h($g($f($x)))`
 
 ## Author
 
