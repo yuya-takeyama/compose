@@ -1,4 +1,4 @@
-# compose
+# yuyat\compose
 
 Function to compose functions.
 
