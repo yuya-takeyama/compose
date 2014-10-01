@@ -10,8 +10,8 @@ function compose(callable ...$functions)
     $initial = array_shift($functions);
 
     return array_reduce($functions, function ($f, $g) {
-        return function ($x) use ($f, $g) {
-            return $f($g($x));
+        return function (...$args) use ($f, $g) {
+            return $f($g(...$args));
         };
     }, $initial);
 }

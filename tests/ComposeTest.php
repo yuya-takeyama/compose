@@ -34,6 +34,17 @@ class ComposeTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('fooBarBaz', $lowerCamelize('foo bar baz'));
     }
 
+    public function test_compose_multiple_arguments()
+    {
+        $f = function ($x) { return "f({$x})"; };
+        $g = function ($x) { return "g({$x})"; };
+        $h = function ($x, $y, $z) { return "h({$x}, {$y}, {$z})"; };
+
+        $composedFunction = compose($f, $g, $h);
+
+        $this->assertSame('f(g(h(1, 2, 3)))', $composedFunction(1, 2, 3));
+    }
+
     public function test_pipeline()
     {
         $splitAsWords = function ($str) {
@@ -48,6 +59,17 @@ class ComposeTest extends \PHPUnit_Framework_TestCase
         $lowerCamelize = pipeline($splitAsWords, $camelizeWords, $join, 'lcfirst');
 
         $this->assertSame('fooBarBaz', $lowerCamelize('foo bar baz'));
+    }
+
+    public function test_pipeline_multiple_arguments()
+    {
+        $f = function ($x, $y, $z) { return "f({$x}, {$y}, {$z})"; };
+        $g = function ($x) { return "g({$x})"; };
+        $h = function ($x) { return "h({$x})"; };
+
+        $composedFunction = pipeline($f, $g, $h);
+
+        $this->assertSame('h(g(f(1, 2, 3)))', $composedFunction(1, 2, 3));
     }
 
     /**
